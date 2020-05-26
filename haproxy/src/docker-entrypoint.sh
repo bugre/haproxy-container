@@ -68,5 +68,6 @@ rsyslogd -f /etc/rsyslog.conf
 
 
 sleep 2
+# /haproxy-entrypoint.sh is the original entrypoint from haproxy container.
 exec /haproxy-entrypoint.sh "$@"
 
