@@ -1,4 +1,4 @@
-FROM haproxy:1.8.24-alpine
+FROM haproxy:1.8.25-alpine
 LABEL maintainer="<wxxx333@gmail.com>"
 
 ARG BUILD_DATE
@@ -13,7 +13,7 @@ LABEL architecture="x86_64"               \
       version="$VERSION"                  \
       vcs-ref="$VCS_REF"                  \
       vcs-type="git"                      \
-      vcs-url="https://github.com/bugre/haproxy-oneliner-doker"
+      vcs-url="https://github.com/bugre/haproxy-container"
 
 RUN apk add --update --no-cache ca-certificates python3 rsyslog bash     \
  && ln -s /usr/local/etc/haproxy /etc/haproxy                            \

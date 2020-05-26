@@ -1,48 +1,34 @@
 # haproxy-container
-## HAProxy Docker image
+## HAProxy Docker alpine based image
 
-Based on eea.docker.haproxy idea.
-
- - Alpine HAProxy
- - HAProxy: **1.8**
+ - Base OS: **Alpine**
+ - HAProxy: **1.8.25**
  - Expose: **5000**
 
-### Supported tags and respective Dockerfile links
 
-  - `:latest` [*Dockerfile*](https://github.com/eea/eea.docker.haproxy/blob/master/haproxy/Dockerfile) - Debian: **Jessie**, HAProxy: **1.8**
+  *Based on eea.docker.haproxy idea*
 
-### Stable and immutable tags
+### Stable tags
 
-  - `:1.8-1.4` [*Dockerfile*](https://github.com/eea/eea.docker.haproxy/tree/1.8-1.4/haproxy/Dockerfile) - HAProxy: **1.8** Release: **1.3**
+  - `:0.1.1` [*Dockerfile*](https://github.com/bugre/haproxy-container/blob/v0.1.0/haproxy/Dockerfile) - HAProxy-Alpine: **1.8.25**
 
-See [older versions](https://github.com/eea/eea.docker.haproxy/releases)
+See [All Releases](https://github.com/bugre/haproxy-container/releases)
 
+### Change Log
 
-### Changes
-
- - [CHANGELOG.md](https://github.com/eea/eea.docker.haproxy/blob/master/CHANGELOG.md)
-
-### Base docker image
-
- - [hub.docker.com](https://hub.docker.com/r/eeacms/haproxy)
-
+(https://github.com/bugre/haproxy-container//blob/master/CHANGELOG.md)
 
 ### Source code
 
-  - [github.com](http://github.com/eea/eea.docker.haproxy)
+  - [github.com](https://github.com/bugre/haproxy-container/)
 
-
-### Installation
-
-1. Install [Docker](https://www.docker.com/)
-2. Install [Docker Compose](https://docs.docker.com/compose/install/).
 
 ## Usage
 
 
 ### Run with Docker Compose
 
-Here is a basic example of a `docker-compose.yml` file using the `eeacms/haproxy` docker image:
+Here is a basic example of a `docker-compose.yml` file using the `bugre/haproxy` docker image:
 
     version: "2"
     services:
@@ -60,6 +46,8 @@ Here is a basic example of a `docker-compose.yml` file using the `eeacms/haproxy
 
       webapp:
         image: bugre/helloworld-py
+        environment:
+          PORT: "8080"
 
 
 The application can be scaled to use more server instances, with `docker-compose scale`:
@@ -79,7 +67,7 @@ minimum possible `DNS_TTL`.
 
 ### Run with backends specified as environment variable
 
-    $ docker run --env BACKENDS="192.168.1.5:80 192.168.1.6:80" eeacms/haproxy
+    $ docker run --env BACKENDS="192.168.1.5:80 192.168.1.6:80" bugre/haproxy
 
 Using the `BACKENDS` variable is a way to quick-start the container.
 The servers are written as `server_ip:server_listening_port`,
@@ -91,31 +79,18 @@ If there are multiple DNS records for one or more of your `BACKENDS` (e.g. when 
 you can use `DNS_ENABLED` environment variable. This way, haproxy will load-balance
 all of your backends instead of only the first entry found:
 
-  $ docker run --link=webapp -e BACKENDS="webapp" -e DNS_ENABLED=true eeacms/haproxy
+  $ docker run --link=webapp -e BACKENDS="webapp" -e DNS_ENABLED=true bugre/haproxy
 
 
 ### Use a custom configuration file mounted as a volume
 
-    $ docker run -v conf.d/haproxy.cfg:/etc/haproxy/haproxy.cfg eeacms/haproxy:latest
+    $ docker run -v conf.d/haproxy.cfg:/etc/haproxy/haproxy.cfg bugre/haproxy:latest
 
 
 If you edit `haproxy.cfg` you can reload it without having to restart the container:
 
     $ docker exec <name-of-your-container> reload
 
-
-### Extend the image with a custom haproxy.cfg file
-
-Additionally, you can supply your own static `haproxy.cfg` file by extending the image
-
-    FROM eeacms/haproxy:latest
-    COPY conf.d/haproxy.cfg /etc/haproxy/haproxy.cfg
-
-    RUN apt-get install...
-
-and then run
-
-    $ docker build -t your-image-name:your-image-tag path/to/Dockerfile
 
 ## Supported environment variables ##
 
@@ -161,15 +136,19 @@ By default the logs from haproxy are present in the docker log, by using the rsy
 
 You can change the logging level by providing the `LOG_LEVEL` environment variable:
 
-    docker run -e LOG_LEVEL=info  ... eeacms/haproxy
+    docker run -e LOG_LEVEL=info  ... bugre/haproxy
 
 You can override the log output by providing the `LOGGING` environment variable:
 
-    docker run -e LOGGING=logs.example.com:5005 ... eeacms/haproxy
+    docker run -e LOGGING=logs.example.com:5005 ... bugre/haproxy
 
 Now make sure that `logs.example.com` listen on UDP port `5005`
 
 ## Copyright and license
+
+This project is based on the original idea of : https://github.com/eea/eea.docker.haproxy
+
+An that project had this copyright info:
 
 The Initial Owner of the Original Code is European Environment Agency (EEA).
 All Rights Reserved.
@@ -179,8 +158,3 @@ you can redistribute it and/or modify it under the terms of the GNU
 General Public License as published by the Free Software Foundation;
 either version 2 of the License, or (at your option) any later
 version.
-
-
-## Funding
-
-[European Environment Agency (EU)](http://eea.europa.eu)
