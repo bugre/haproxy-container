@@ -2,7 +2,7 @@
 ## HAProxy Docker alpine based image
 
  - Base OS: **Alpine**
- - HAProxy: **1.8.25**
+ - HAProxy: **see info bellow in Stable tags section**
  - Expose: **5000**
 
 
@@ -10,7 +10,12 @@
 
 ### Stable tags
 
+*new tag convention, including haproxy version*
+  - `:0.2.0-2.1.4` [*Dockerfile*](https://github.com/bugre/haproxy-container/blob/v0.2.0-2.1.4/haproxy/Dockerfile) - HAProxy-Alpine: **0.2.0-2.1.4**
+
+
   - `:0.1.1` [*Dockerfile*](https://github.com/bugre/haproxy-container/blob/v0.1.0/haproxy/Dockerfile) - HAProxy-Alpine: **1.8.25**
+
 
 See [All Releases](https://github.com/bugre/haproxy-container/releases)
 
@@ -114,8 +119,8 @@ either when running the container or in a `docker-compose.yml` file.
   * `BACKENDS_MODE` Backends mode - default `http` or `FRONTEND_MODE` if declared
   * `BALANCE` The algorithm used for load-balancing - default `roundrobin`
   * `SERVICE_NAMES` An optional prefix for services to be included when discovering services separated by space. - by default it is not set
-  * `LOGGING` Override logging ip address:port - default is udp `127.0.0.1:514` inside container
-  * `LOG_LEVEL` Set haproxy log level, default is `notice` ( only send important events ). Can be: `emerg`,`alert`,`crit`,`err`,`warning`,`notice`,`info`,`debug`
+  * `LOGGING` Override logging ip address:port - default is "stderr" since v0.2.0.  Use: `127.0.0.1:514` inside container rsyslog
+  * `LOG_LEVEL` Set haproxy log level, default is `info` ( only send important events ). Can be: `emerg`,`alert`,`crit`,`err`,`warning`,`notice`,`info`,`debug`
   * `DNS_ENABLED` DNS lookup provided `BACKENDS`. Use this option when your backends are resolved by an internal/external DNS service (e.g. **Docker 1.11+**, **Rancher**)
   * `DNS_TTL` DNS lookup backends every `DNS_TTL` minutes. Default `1` minute.
   * `TIMEOUT_CONNECT` the maximum time to wait for a connection attempt to a VPS to succeed. Default `5000` ms

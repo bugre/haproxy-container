@@ -2,10 +2,17 @@
 ## docker:bugre/haproxy || github.com/bugre/haproxy-container
 
 
+## 2020-05-27 (v0.2.0-2.1.4)
+
+- new version naming convention, including "-haproxy_version"
+- upgrade to haproxy v2.1.4 to be able to use stderr and stdout as log output in container
+- default log output will be stdout (was 'udp 127.0.0.1:514' for local syslog)
+- default loglevel is now info
 
 
 ## 2020-05-26 (0.1.1)
- - correc typos in Dockerfile
+
+ - fix typos in Dockerfile
  - changes in README.md and CHANGELOG.md to reflect difference from eea.haproxy.
  - upgrade to haproxy 1.8.25 and based on alpine 3.11 
 
