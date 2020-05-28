@@ -8,4 +8,5 @@ docker build \
   --build-arg BUILD_DATE="$build_date"  \
   --build-arg VCS_REF="$vcs_ref"        \
   --build-arg VERSION="$version"        \
-  -t "$IMAGE_NAME" .
+  -t "$IMAGE_NAME:latest" \
+  -t "$IMAGE_NAME:$version" .

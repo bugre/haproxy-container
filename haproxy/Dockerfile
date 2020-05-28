@@ -1,4 +1,4 @@
-FROM haproxy:1.8.25-alpine
+FROM haproxy:2.1.4-alpine
 LABEL maintainer="<wxxx333@gmail.com>"
 
 ARG BUILD_DATE
