@@ -14,7 +14,7 @@
   - `:0.2.0-2.1.4` [*Dockerfile*](https://github.com/bugre/haproxy-container/blob/v0.2.0-2.1.4/haproxy/Dockerfile) - HAProxy-Alpine: **0.2.0-2.1.4**
 
 
-  - `:0.1.1` [*Dockerfile*](https://github.com/bugre/haproxy-container/blob/v0.1.0/haproxy/Dockerfile) - HAProxy-Alpine: **1.8.25**
+  - `:v0.1.1-1.8.25` [*Dockerfile*](https://github.com/bugre/haproxy-container/blob/v0.1.1-1.8.25/haproxy/Dockerfile) - HAProxy-Alpine: **1.8.25**
 
 
 See [All Releases](https://github.com/bugre/haproxy-container/releases)
