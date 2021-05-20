@@ -41,6 +41,7 @@ if ! test -e /etc/haproxy/haproxy.cfg; then
     if [ ! -z "$FALL" ]; then echo "export FALL=\"$FALL\""  >> /etc/environment; fi
     if [ ! -z "$FAST_INTER" ]; then echo "export FAST_INTER=\"$FAST_INTER\""  >> /etc/environment; fi
     if [ ! -z "$FRONTEND_NAME" ]; then echo "export FRONTEND_NAME=\"$FRONTEND_NAME\""  >> /etc/environment; fi
+    if [ ! -z "$FRONTEND_BIND_IP" ]; then echo "export FRONTEND_BIND_IP=\"$FRONTEND_BIND_IP\""  >> /etc/environment; fi
     if [ ! -z "$FRONTEND_PORT" ]; then echo "export FRONTEND_PORT=\"$FRONTEND_PORT\""  >> /etc/environment; fi
     if [ ! -z "$FRONTEND_MODE" ]; then echo "export FRONTEND_MODE=\"$FRONTEND_MODE\""  >> /etc/environment; fi
     if [ ! -z "$HTTPCHK" ]; then echo "export HTTPCHK=\"$HTTPCHK\""  >> /etc/environment; fi

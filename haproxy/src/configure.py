@@ -10,6 +10,7 @@ import subprocess
 
 FRONTEND_NAME = os.environ.get('FRONTEND_NAME', 'http-frontend')
 FRONTEND_PORT = os.environ.get('FRONTEND_PORT', '5000')
+FRONTEND_BIND_IP = os.environ.get('FRONTEND_BIND_IP', '*')
 FRONTEND_MODE = os.environ.get('FRONTEND_MODE', os.environ.get('BACKENDS_MODE','http'))
 BACKEND_NAME = os.environ.get('BACKEND_NAME', 'http-backend')
 BALANCE = os.environ.get('BALANCE', 'roundrobin')
@@ -47,7 +48,7 @@ listen_conf = Template("""
 
 frontend_conf = Template("""
   frontend $name
-    bind *:$port $accept_proxy
+    bind $bind_ip:$port $accept_proxy
     mode $mode
     default_backend $backend
 """)
@@ -240,6 +241,7 @@ with open("/etc/haproxy/haproxy.cfg", "w") as configuration:
     configuration.write(
         frontend_conf.substitute(
             name=FRONTEND_NAME,
+            bind_ip=FRONTEND_BIND_IP,
             port=FRONTEND_PORT,
             mode=FRONTEND_MODE,
             backend=BACKEND_NAME,

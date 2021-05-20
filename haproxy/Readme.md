@@ -11,6 +11,7 @@
 ### Stable tags
 
 *new tag convention, including haproxy version*
+  - `:0.2.1-2.1.4` [*Dockerfile*](https://github.com/bugre/haproxy-container/blob/v0.2.1-2.1.4/haproxy/Dockerfile) - HAProxy-Alpine: **0.2.1-2.1.4**
   - `:0.2.0-2.1.4` [*Dockerfile*](https://github.com/bugre/haproxy-container/blob/v0.2.0-2.1.4/haproxy/Dockerfile) - HAProxy-Alpine: **0.2.0-2.1.4**
 
 
@@ -108,6 +109,7 @@ either when running the container or in a `docker-compose.yml` file.
   * `STATS_PORT` The port to bind statistics to - default `1936`
   * `STATS_AUTH` The authentication details (written as `user:password` for the statistics page - default `admin:admin`
   * `FRONTEND_NAME` The label of the frontend - default `http-frontend`
+  * `FRONTEND_BIND_IP` The IP where the frontend will bind. - default `*` (all)
   * `FRONTEND_PORT` The port to bind the frontend to - default `5000`
   * `FRONTEND_MODE` Frontend mode - default `http` or `BACKENDS_MODE` if declared
   * `PROXY_PROTOCOL_ENABLED` The option to enable or disable accepting proxy protocol (`true` stands for enabled, `false` or anything else for disabled) - default `false`
@@ -126,7 +128,7 @@ either when running the container or in a `docker-compose.yml` file.
   * `TIMEOUT_CONNECT` the maximum time to wait for a connection attempt to a VPS to succeed. Default `5000` ms
   * `TIMEOUT_CLIENT` timeouts apply when the client is expected to acknowledge or send data during the TCP process. Default `50000` ms
   * `TIMEOUT_SERVER` timeouts apply when the server is expected to acknowledge or send data during the TCP process. Default `50000` ms
-  * `HTTPCHK` The HTTP method and uri used to check on the servers health - default `HEAD /`
+  * `HTTPCHK` The HTTP method + URI used to check on the servers health - default `HEAD /`
   * `HTTPCHK_HOST` Host Header override - default `localhost`
   * `INTER` parameter sets the interval between two consecutive health checks. If not specified, the default value is `2s`
   * `FAST_INTER` parameter sets the interval between two consecutive health checks when the server is any of the transition state (read above): UP - transitionally DOWN or DOWN - transitionally UP. If not set, then `INTER` is used.

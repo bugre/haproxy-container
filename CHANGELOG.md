@@ -1,6 +1,9 @@
 # Changelog
 ## docker:bugre/haproxy || github.com/bugre/haproxy-container
 
+## 2021-05-17 (v0.2.1-2.1.4)
+
+- add env FRONTEND_BIND_IP to specify the frontend IP to wich haproxy will bind. Default is `*` (all interfaces). 
 
 ## 2020-05-27 (v0.2.0-2.1.4)
 

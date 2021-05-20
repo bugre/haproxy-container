@@ -1,5 +1,8 @@
 #!/bin/bash
 
+## before run.. add a tag
+## git tag -f -a "v0.2.0-2.1.4"  -m "Upgrade to haproxy 2.1.4 and stdout logging output"
+##
 build_date=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
 version=$(git describe --tags 2> /dev/null || echo "$SOURCE_BRANCH")
 vcs_ref=$(git rev-parse --short HEAD)
